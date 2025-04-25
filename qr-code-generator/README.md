@@ -22,17 +22,17 @@ pip install -r requirements.txt
 
 ## Usage
 
-To generate a QR code, run the main script located in the `src` directory. You can specify the input data directly in the script.
+To generate a QR code, run the all script located in the `src` directory. You can specify the input data directly in the script.
 
 Example command to run the script:
 
 ```
-python src/main.py
+python src/all.py
 ```
 
 ## Example
 
-1. Modify the `src/main.py` file to include your desired text or URL.
+1. Modify the `src/all.py` file to include your desired text or URL.
 2. Run the script to generate the QR code image.
 
 The generated QR code will be saved as a PNG file in the same directory.

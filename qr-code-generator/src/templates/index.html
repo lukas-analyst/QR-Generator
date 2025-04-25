@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Generátor</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>QR Generátor</h1>
+        <form action="/generate" method="post">
+            <label for="qr_type">Vyberte typ QR kódu:</label>
+            <select id="qr_type" name="qr_type" required>
+                <option value="wifi">WiFi</option>
+                <option value="url">URL</option>
+                <option value="payment">Platba</option>
+            </select>
+            <div id="wifi_fields" class="hidden">
+                <h3>WiFi</h3>
+                <label for="ssid">SSID:</label>
+                <input type="text" id="ssid" name="ssid">
+                <label for="security">Zabezpečení:</label>
+                <input type="text" id="security" name="security">
+                <label for="password">Heslo:</label>
+                <input type="text" id="password" name="password">
+            </div>
+            <div id="url_fields" class="hidden">
+                <h3>URL</h3>
+                <label for="url">URL:</label>
+                <input type="text" id="url" name="url">
+            </div>
+            <div id="payment_fields" class="hidden">
+                <h3>Platba</h3>
+                <label for="account">Číslo účtu:</label>
+                <input type="text" id="account" name="account">
+                <label for="amount">Částka:</label>
+                <input type="text" id="amount" name="amount">
+                <label for="vs">Variabilní symbol:</label>
+                <input type="text" id="vs" name="vs">
+                <label for="ks">Konstantní symbol:</label>
+                <input type="text" id="ks" name="ks">
+                <label for="msg">Poznámka:</label>
+                <input type="text" id="msg" name="msg">
+            </div>
+            <button type="submit">Vygenerovat QR kód</button>
+        </form>
+    </div>
+    <script>
+        const qrTypeSelect = document.getElementById('qr_type');
+        const wifiFields = document.getElementById('wifi_fields');
+        const urlFields = document.getElementById('url_fields');
+        const paymentFields = document.getElementById('payment_fields');
+
+        qrTypeSelect.addEventListener('change', () => {
+            wifiFields.classList.add('hidden');
+            urlFields.classList.add('hidden');
+            paymentFields.classList.add('hidden');
+
+            if (qrTypeSelect.value === 'wifi') {
+                wifiFields.classList.remove('hidden');
+            } else if (qrTypeSelect.value === 'url') {
+                urlFields.classList.remove('hidden');
+            } else if (qrTypeSelect.value === 'payment') {
+                paymentFields.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
